@@ -53,13 +53,6 @@ func newDev(ctx context.Context, log *logrus.Entry) (Interface, error) {
 	d.prod.clusterGenevaLoggingEnvironment = version.DevGenevaLoggingEnvironment
 	d.prod.clusterGenevaLoggingNamespace = version.DevClusterGenevaLoggingNamespace
 
-	// ugh: run this again after RP_MODE=development has caused the feature flag
-	// to be set.
-	d.prod.ARMHelper, err = newARMHelper(ctx, log, d)
-	if err != nil {
-		return nil, err
-	}
-
 	return d, nil
 }
 
